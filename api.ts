@@ -7,13 +7,14 @@ import {
 async function request(url: string) {
   const res = await fetch(url);
   if (!res.ok) {
-    throw new Error(`Failed to fetch ${url}`);
+    console.error(`Failed to fetch ${url}`);
+    return null;
   }
   return await res.json();
 }
 
-type Month = string; // yyyy-mm
-type RepoName = string; // org/repo
+export type Month = string; // yyyy-mm
+export type RepoName = string; // org/repo
 
 interface RepoOpenRankByMonthItem {
   full_name: string;
@@ -48,13 +49,12 @@ export async function getXSOSIReposInEachMonth(): Promise<
 }
 
 type MetricName = string;
-interface MetricContent {
+type MetricContent = {
   [key: Month]: number;
-}
+} | null;
+export type AllMetrics = Map<MetricName, MetricContent>;
 
-export async function getRepoMetrics(
-  repo: RepoName
-): Promise<Map<MetricName, MetricContent>> {
+export async function getAllMetrics(repo: RepoName): Promise<AllMetrics> {
   const result: Map<MetricName, MetricContent> = new Map();
   const metrics = await Promise.all(
     OPENDIGGER_METRICS_FOR_REPO.map((metric) =>
