@@ -48,7 +48,7 @@ export async function getXSOSIReposInEachMonth(): Promise<
   return result;
 }
 
-type MetricName = string;
+export type MetricName = string;
 type MetricContent = {
   [key: Month]: number;
 } | null;
