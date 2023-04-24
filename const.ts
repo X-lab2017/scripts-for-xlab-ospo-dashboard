@@ -39,4 +39,6 @@ export const ENDPOINT_YUQUE_STATICS =
   "https://xlab2017.yuque.com/api/organization/14356259/statistics";
 // 论文发表情况
 export const ENDPOINT_STATIC = "./static"; // read from local static files
-
+// 导出的xlsx文件路径
+export const DIRNAME_SHEETS = 'sheets';
+export const FILENAME_SHEET_OD_METRICS = '1_OD_metrics.xlsx';

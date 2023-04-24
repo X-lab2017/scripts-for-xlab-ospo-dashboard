@@ -1,3 +1,5 @@
+import * as XLSX from "xlsx";
+
 import {
   getXSOSIReposInEachMonth,
   getAllMetrics,
@@ -6,7 +8,11 @@ import {
   AllMetrics,
   MetricName,
 } from "./api";
-import { OPENDIGGER_METRICS_FOR_REPO } from "./const";
+import {
+  OPENDIGGER_METRICS_FOR_REPO,
+  DIRNAME_SHEETS,
+  FILENAME_SHEET_OD_METRICS,
+} from "./const";
 
 interface Record {
   month: Month;
@@ -66,5 +72,12 @@ export default class ODMetricsCenter {
 
   printRecords() {
     console.table(this.records);
+  }
+
+  dump2xlsx() {
+    const wb = XLSX.utils.book_new();
+    const ws = XLSX.utils.json_to_sheet(this.records);
+    XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+    XLSX.writeFile(wb, `${DIRNAME_SHEETS}/${FILENAME_SHEET_OD_METRICS}`);
   }
 }
