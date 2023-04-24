@@ -12,27 +12,30 @@ async function request(url: string) {
   return await res.json();
 }
 
+type Month = string; // yyyy-mm
+type RepoName = string; // org/repo
+
 interface RepoOpenRankByMonthItem {
   full_name: string;
   org_name: string;
   repo_name: string;
-  month: string; // yyyy-mm
+  month: Month;
   openrank: number;
 }
 
 export async function getXSOSIReposInEachMonth(): Promise<
-  [string, string[]][]
+  Map<Month, RepoName[]>
 > {
   const repoOpenRankByMonth: RepoOpenRankByMonthItem[] = await request(
     REPO_OPENRANK_BY_MONTH
   );
-  const result: [string, string[]][] = [];
+  const result: Map<Month, RepoName[]> = new Map();
   let currentMonth = "";
-  let reposInEachMonth: string[] = [];
+  let reposInEachMonth: RepoName[] = [];
   for (const item of repoOpenRankByMonth) {
     if (item.month !== currentMonth) {
       if (currentMonth !== "") {
-        result.push([currentMonth, reposInEachMonth]);
+        result.set(currentMonth, reposInEachMonth);
       }
       currentMonth = item.month;
       reposInEachMonth = [item.full_name];
@@ -40,25 +43,26 @@ export async function getXSOSIReposInEachMonth(): Promise<
       reposInEachMonth.push(item.full_name);
     }
   }
-  result.push([currentMonth, reposInEachMonth]);
+  result.set(currentMonth, reposInEachMonth);
   return result;
 }
 
-type RepoMetric = [
-  string,
-  {
-    [key: string]: number;
-  }
-];
+type MetricName = string;
+interface MetricContent {
+  [key: Month]: number;
+}
 
-export async function getRepoMetrics(repo: string): Promise<RepoMetric[]> {
+export async function getRepoMetrics(
+  repo: RepoName
+): Promise<Map<MetricName, MetricContent>> {
+  const result: Map<MetricName, MetricContent> = new Map();
   const metrics = await Promise.all(
     OPENDIGGER_METRICS_FOR_REPO.map((metric) =>
       request(`${ENDPOINT_OPENDIGGER}/${repo}/${metric}.json`)
     )
   );
-  return OPENDIGGER_METRICS_FOR_REPO.map((metric, index) => [
-    metric,
-    metrics[index],
-  ]);
+  OPENDIGGER_METRICS_FOR_REPO.map((metric, index) => {
+    result.set(metric, metrics[index]);
+  });
+  return result;
 }
