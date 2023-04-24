@@ -60,7 +60,7 @@ export default class ODMetricsCenter {
       for (const repo of repos) {
         const record: Record = {
           month,
-          repo,
+          repo: repo.split("/")[1],
         };
         OPENDIGGER_METRICS_FOR_REPO.forEach((metric) => {
           record[metric] = this.getRepoMetricInMonth(repo, metric, month);
