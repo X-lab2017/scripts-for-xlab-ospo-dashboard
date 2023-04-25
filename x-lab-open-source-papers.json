@@ -1,0 +1,66 @@
+{
+  "data": [
+    {
+      "title": "Understanding the Archived Projects on GitHub",
+      "authors": [
+        "Xiaoya Xia",
+        "Shengyu Zhao",
+        "Xinran Zhang",
+        "Zehua Lou",
+        "Wei Wang",
+        "Fenglin Bi"
+      ],
+      "year": 2023,
+      "venue": "SANER",
+      "url": ""
+    },
+    {
+      "title": "Lessons Learned From the Ant Group Open Source Program Office",
+      "authors": [
+        "Xiaoya Xia",
+        "Wei Wang",
+        "Shengyu Zhao",
+        "Sikang Bian",
+        "Rong Wang"
+      ],
+      "year": 2023,
+      "venue": "IEEE Computer",
+      "url": "https://doi.org/10.1109/MC.2022.3219638"
+    },
+    {
+      "title": "Exploring Activity and Contributors on GitHub: Who, What, When, and Where",
+      "authors": ["Xiaoya Xia", "Zhenjie Weng", "Wei Wang", "Shengyu Zhao"],
+      "year": 2022,
+      "venue": "APSEC",
+      "url": "https://doi.org/10.1109/APSEC57359.2022.00013"
+    },
+    {
+      "title": "Open Source Galaxy: Heterogeneous Information Networks in Social Coding",
+      "authors": ["Tianyi Zhou", "Wei Wang", "Shengyu Zhao"],
+      "year": 2021,
+      "venue": "ICBDA",
+      "url": "https://doi.org/10.1109/ICBDA51983.2021.9403169"
+    },
+    {
+      "title": "数据驱动的开源贡献度量化评估与持续优化方法",
+      "authors": ["范家宽", "王皓月", "赵生宇", "周添", "王伟"],
+      "year": 2021,
+      "venue": "计算机科学",
+      "url": "https://www.jsjkx.com/CN/10.11896/jsjkx.201000107"
+    },
+    {
+      "title": "A GitHub Project Recommendation Model Based on Self-Attention Sequence",
+      "authors": ["Bin Su", "Kai Zheng", "Wei Wang"],
+      "year": 2021,
+      "venue": "BDE",
+      "url": "https://doi.org/10.1145/3468920.3468936"
+    },
+    {
+      "title": "全球开源生态发展现状研究",
+      "authors": ["王伟", "周添一", "赵生宇", "范家宽"],
+      "year": 2020,
+      "venue": "信息通信技术与政策",
+      "url": "http://ictp.caict.ac.cn/CN/Y2020/V46/I5/38"
+    }
+  ]
+}
