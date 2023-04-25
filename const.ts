@@ -35,11 +35,16 @@ export const OPENDIGGER_METRICS_FOR_REPO = [
   // "change_request_age",
 ];
 // 语雀空间统计相关
-export const ENDPOINT_YUQUE_STATICS =
-  "https://xlab2017.yuque.com/api/organization/14356259/statistics";
+export const ENDPOINT_YUQUE_XLAB =
+  "https://xlab2017.yuque.com/api/organization/14356259";
+export const YUQUE_OVERALL_STATISTICS = ENDPOINT_YUQUE_XLAB + "/statistics";
+export const YUQUE_TOP20_MEMBER_STATISTICS =
+  ENDPOINT_YUQUE_XLAB +
+  "/statistics/members?limit=20&range=0&sort_field=write_count&sort_order=desc";
 // 论文发表情况
 export const ENDPOINT_STATIC = "./static"; // read from local static files
 // 导出的xlsx文件路径
-export const DIRNAME_SHEETS = 'sheets';
-export const FILENAME_SHEET_OD_METRICS = '1_OD_metrics.xlsx';
-export const FILENAME_SHEET_OPENRANK_DETAILS = '2_openrank_details.xlsx';
+export const DIRNAME_SHEETS = "sheets";
+export const FILENAME_SHEET_OD_METRICS = "1_OD_metrics.xlsx";
+export const FILENAME_SHEET_OPENRANK_DETAILS = "2_openrank_details.xlsx";
+export const FILENAME_SHEET_YUQUE_STATISTICS = "3_yuque_statistics.xlsx";

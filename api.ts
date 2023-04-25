@@ -2,10 +2,12 @@ import {
   REPO_OPENRANK_BY_MONTH,
   ENDPOINT_OPENDIGGER,
   OPENDIGGER_METRICS_FOR_REPO,
+  YUQUE_OVERALL_STATISTICS,
+  YUQUE_TOP20_MEMBER_STATISTICS,
 } from "./const";
 
-async function request(url: string) {
-  const res = await fetch(url);
+async function request(url: string, options?: RequestInit) {
+  const res = await fetch(url, options);
   if (!res.ok) {
     console.error(`Failed to fetch ${url}`);
     return null;
@@ -90,4 +92,20 @@ export async function getOpenRankDetail(
   return await request(
     `${ENDPOINT_OPENDIGGER}/${repo}/project_openrank_detail/${month}.json`
   );
+}
+
+export async function getYuqueOverallStatistics(_yuque_session: string) {
+  return await request(YUQUE_OVERALL_STATISTICS, {
+    headers: {
+      Cookie: `_yuque_session=${_yuque_session}`,
+    },
+  });
+}
+
+export async function getYuqueTop20MemberStatistics(_yuque_session: string) {
+  return await request(YUQUE_TOP20_MEMBER_STATISTICS, {
+    headers: {
+      Cookie: `_yuque_session=${_yuque_session}`,
+    },
+  });
 }
