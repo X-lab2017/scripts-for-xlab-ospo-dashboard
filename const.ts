@@ -42,3 +42,4 @@ export const ENDPOINT_STATIC = "./static"; // read from local static files
 // 导出的xlsx文件路径
 export const DIRNAME_SHEETS = 'sheets';
 export const FILENAME_SHEET_OD_METRICS = '1_OD_metrics.xlsx';
+export const FILENAME_SHEET_OPENRANK_DETAILS = '2_openrank_details.xlsx';

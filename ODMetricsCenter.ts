@@ -16,7 +16,7 @@ import {
 
 interface Record {
   month: Month;
-  repo: RepoName;
+  repo: string; // only repo name, no owner name
   [metric: MetricName]: number | string; // https://stackoverflow.com/a/38262343/10369621
 }
 
@@ -60,7 +60,7 @@ export default class ODMetricsCenter {
       for (const repo of repos) {
         const record: Record = {
           month,
-          repo: repo.split("/")[1],
+          repo: repo.split("/")[1], // drop owner name
         };
         OPENDIGGER_METRICS_FOR_REPO.forEach((metric) => {
           record[metric] = this.getRepoMetricInMonth(repo, metric, month);

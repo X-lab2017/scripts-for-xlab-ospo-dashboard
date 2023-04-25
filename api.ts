@@ -66,3 +66,28 @@ export async function getAllMetrics(repo: RepoName): Promise<AllMetrics> {
   });
   return result;
 }
+
+export interface RawOpenRankDetail {
+  links: {
+    s: string; // source node id
+    t: string; // target node id
+    w: number; // link weight
+  }[];
+  nodes: {
+    id: string; // node id
+    n: RepoName;
+    c: "r" | "i" | "p" | "u"; // node category, repo | issue | pr | user
+    r: number; // ratio
+    i: number; // inheritance value
+    v: number; // value
+  }[];
+}
+
+export async function getOpenRankDetail(
+  repo: RepoName,
+  month: Month
+): Promise<RawOpenRankDetail> {
+  return await request(
+    `${ENDPOINT_OPENDIGGER}/${repo}/project_openrank_detail/${month}.json`
+  );
+}
