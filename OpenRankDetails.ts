@@ -83,13 +83,19 @@ export default class OpenRankDetails {
               .filter((link) => link.t === userNode.id)
               .forEach((link) => {
                 const fromNode = nodes.find((node) => node.id === link.s);
-                this.records.push({
-                  month,
-                  repo: repo.split("/")[1], // drop owner name
-                  user: userNode.n,
-                  from: this.formatFromName(fromNode),
-                  value: (1 - userNode.r) * link.w * fromNode.v,
-                });
+                if (fromNode) {
+                  this.records.push({
+                    month,
+                    repo: repo.split("/")[1], // drop owner name
+                    user: userNode.n,
+                    from: this.formatFromName(fromNode),
+                    value: (1 - userNode.r) * link.w * fromNode.v,
+                  });
+                } else { // for more info: https://github.com/X-lab2017/scripts-for-xlab-ospo-dashboard/issues/1
+                  console.log(
+                    `Cannot find node with id ${link.s} in repo ${repo}, ${month}`
+                  );
+                }
               });
           });
       }
