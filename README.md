@@ -1,7 +1,7 @@
 # X-lab OSPO 大屏数据制作脚本
 相关 Issue：https://github.com/X-lab2017/open-wonderland/issues/250
 
-大屏链接：https://dataease.nzcer.cn/link/N1fjcnVD
+大屏链接：https://dataease.x-lab.info/link/N1fjcnVD
 
 <img width="1920" alt="image" src="https://user-images.githubusercontent.com/32434520/234217503-feed073a-6e8e-4182-9366-2a837e82cd89.png">
 
